@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block customcss %}
+{% endblock customcss %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+投稿詳細
+</div>
+{% endblock header %}
+
+{% block content %}
+
+<div class="container">
+    <div class="alert alert-info" role="alert">
+        <p>主題: {{object.title}}</p>
+        <p>ライター: {{object.author}}</p>
+        <p>内容: {{object.content}}</p>
+        <!-- objectのimagesを取ってくる為にurlを指定 -->
+        <p><img src="{{ object.images.url }}" width=600 alt=""></p>
+        <!-- good関数＋pkを呼び出す -->
+        <a href="{% url 'good' object.pk %}" class="btn btn-primary" role="button" aria-pressed="true">♡いいね！する</a>
+        <a href="{% url 'read' object.pk %}" class="btn btn-secondary " role="button" aria-pressed="true">既読にする</a>
+    </div>
+</div>
+    
+
+{% endblock content %}
